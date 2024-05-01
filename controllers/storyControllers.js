@@ -2,7 +2,6 @@ const Story = require("../models/Story");
 
 // Save Story
 exports.saveStory = async (req, res) => {
-  console.log("req.body :", req.body);
   try {
     const { userId, slides } = req.body;
 
@@ -129,8 +128,6 @@ exports.bookmarkStory = async (req, res) => {
       (bookmark) => bookmark.userId.toString() === userId
     );
 
-    console.log("alreadyBookmarkedIndex :", alreadyBookmarkedIndex);
-
     if (alreadyBookmarkedIndex !== -1) {
       // User has already bookmarked the story, so remove the bookmark
       story.bookmarks.splice(alreadyBookmarkedIndex, 1);
@@ -233,8 +230,6 @@ exports.getLikesCount = async (req, res) => {
 
     // Get the count of likes
     const likesCount = story.likes.length;
-
-    console.log("likes count :", likesCount);
 
     res.status(200).json({ likesCount });
   } catch (error) {
