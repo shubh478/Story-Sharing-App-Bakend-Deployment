@@ -6,7 +6,8 @@ const PORT = process.env.PORT || 3000;
 const usersRoute = require("./routes/authRoutes");
 const storyRoute = require("./routes/storyRoutes");
 const path = require("path");
-
+const cors = require("cors");
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1/users", usersRoute);
 app.use("/api/v1/story", storyRoute);
